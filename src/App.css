@@ -1,38 +1,274 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap');
+:root{
+    /* fonts */
+    --ff-main: 'Open Sans', sans-serif;
+    --ff-title: 'Raleway', sans-serif;
+
+    /* pri colors */
+    --clr-priBlue: #00acee;
+    --clr-priGreen: #23e04f;
+    --clr-priRed: #e02323;
+    --clr-priGrey: #d3d3d3;
+
+    /* darker hue */
+    --clr-priBlue-dark: #35a0ca;
+    --clr-priGreen-dark: #3ab540;
+    --clr-priRed-dark: #c01a38;
+    --clr-priGrey-dark: #a4a5a5;
+
+    /* lighter hue */
+    --clr-priGrey-light: #f4f4f4;
+
+    /* shadow */
+    --shdw-app: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    --shdw-btn-hover: 0px 0px 2px  var(--clr-priGrey-light);
+    --shdw-task-hover:  0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 4px 0 rgba(0, 0, 0, 0.19);
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+li{
+    list-style: none;
+}
+
+
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.main-container{
+    height: 100vh;
+}
+
+.app-container{
+    background-color: #fff;
+    box-shadow: var(--shdw-app);
+    padding: 4rem;
+    min-width: 36rem;
+}
+
+.app-title{
+    padding-bottom: 2rem;
+
+}
+
+.app-title h2{
+    font-family: var(--ff-title);
+    font-weight: 400;
+    font-size: 34px;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.app-header{
+    padding-bottom: 1.5rem;
+}
+
+.app-header label{
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--clr-priBlue) solid 2px;
+    padding: 0.3rem;
+    width: 100%;
+    
+}
+
+.app-header label:hover{    
+    border-bottom-color: var(--clr-priBlue-dark);    
+}
+
+.app-header label input{
+    background: none;
+    border: none;
+    padding: 0.5rem 0;
+    font-size: 16px;
+    width: 100%;
+}
+
+.app-header label input:focus{
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.app-header form button{
+    background:none;
+    border: none;
+    color: var(--clr-priBlue);
+    font-size: 24px;
+    padding: 5px;
+}
+
+.app-header form button:hover{
+    cursor: pointer;
+    color: var(--clr-priBlue-dark);
+    transform: scale(1.02);
+}
+
+.app-body{
+    padding: 1rem calc(1rem - 6px);
+    height: 25rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.app-body::-webkit-scrollbar{
+    width: 6px;
+    background-color: #cfcece;
+    border-radius: 26px;
+    
+}
+
+.app-body::-webkit-scrollbar-thumb{
+    background-color: #53525277;
+    border-radius: 26px;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.app-body::-webkit-scrollbar-thumb:hover{
+    background-color: #5352529a;
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+
+.noTasksBox{
+    height: 100%;
+    transition: all 250ms;
 }
+
+.noTasksBox p {
+    font-family: var(--ff-main);
+    color: var(--clr-priGrey-dark);
+    text-transform: capitalize;
+}
+
+
+
+.task{
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 10px;
+    font-family: var(--ff-main);
+    min-height: 3rem;
+    visibility: visible;
+    opacity: 1;
+    transition: all 200ms;
+    
+}
+
+.deletedTask{
+    opacity: 0;
+ }
+
+.task:hover{
+    transform: scale(1.02);
+    
+}
+
+
+.task-content p{
+    max-width:20rem;
+    word-break: break-all;
+
+}
+
+
+
+
+.contentBtnWrapper{
+    justify-content: space-between;
+    padding: 0 10px;
+    align-items: flex-start;
+}
+
+.edit-btns > button{
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.fas{
+    font-size: 17px;
+    padding: 5px;
+    transition: all 100ms;
+}
+
+.fas:hover{
+    text-shadow: var(--shdw-btn-hover);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.fa-times{
+    color: var(--clr-priRed);
+
+}
+
+.fa-times:hover{
+    color: var(--clr-priRed-dark);
+
+}
+
+.edit-btns{
+    gap: 10px;
+}
+
+.check-btn:disabled .fa-check{
+    color: var(--clr-priGrey);
+}
+
+
+.check-btn:disabled:hover,.check-btn:disabled:hover .fa-check:hover{
+    cursor: default;
+    transform: scale(1);
+}
+.fa-check{
+    color: var(--clr-priGreen);
+}
+
+.fa-check:hover{
+    color: var(--clr-priGreen-dark);
+}
+
+.date-wrapper{
+    gap: 1px;
+    margin-top: 5px;
+    padding: 5px;
+    font-size: 10px;
+    color: var(--clr-priGrey-dark);
+    position: relative;
+    border-top: var(--clr-priGrey) solid 1px;
+}
+
+.date-wrapper > span{
+    display: block;
+}
+
+
+
+.checkedTask{
+    text-decoration: line-through;
+    color: var(--clr-priGrey-dark);
+}
+
+
